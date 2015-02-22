@@ -1,22 +1,123 @@
-<!DOCTYPE html>
+x<!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="t1.css" type="text/css"/>
-<script>
-var w = window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth;
+<style type="text/css">
+*.{
+	margin:0px;
+	padding:0px;
+}
+#b{
+	height:560px;
+	width:360px;
+	background:black;
+	margin:0 auto;
+}
+#r{
+	background:#444444;
+	width:100%;
+	height:100%;
+}
+#button{
+	height:100px;
+	width:100px;
+	border-radius:50px;
+	background:white;
+	position:relative;
+	top:70%;
+	margin:0 auto;
+}
+#butn{
+	margin:0 auto;
+	vertical-align:center;
+	position:relative;
+	height:100px;
+	width:100px;
+	border-radius:50px;
+	background:white;
+}
+#stwa{
+	color:white;
+	background:#444444;
+	border:none;
+	text-align:center;
+	vertical-align:center;
+	height:30%;
+	width:80%;
+	padding-top:6%;
+}
+#timer{
+	height:8%;
+	width:60%;
+	position:relative;
+	margin:0 auto;
+	top:30%;
+	border:1px solid white;
+	
+}
+#result{
+	height:30%;
+	width:80%;
+	position:relative;
+	margin:0 auto;
+	top:-20%;
+	border:1px solid white;
+	text-align:center;
+	color:white;
+}
+</style>
 
-var h = window.innerHeight
-|| document.documentElement.clientHeight
-|| document.body.clientHeight;
 
-var x = document.getElementById("b");
-</script>
+<script type="text/javascript">   <!--javascript declaration-->
+var sec = 0;  //declare global variable called sec and assign 0
+var mins = 0;  //declare global variable called mins and assign 0
+var hour = 0;  //declare global variable called hour and assign 0
+function changestat(){   //declare a function called changestat()
+var a=document.getElementById('butn').value;  //take the value by id called 'butn' and store that in a variable called 'a'
+if(a=='Start'){  //declare if block if a is equal to 'Start'
+document.getElementById('butn').value='Stop';  //change the value of 'butn' from 'Start' to 'Pause'
+}  //end of if block
+else if(a=='Stop'){  //declare else if block if a is equal to 'Pause'
+document.getElementById('butn').value='Start';  //change the value of 'butn' from 'Pause' to 'Start'
+} //end of else if block
+
+stopwatch();  //call the function called stopwatch()
+var stwa=document.getElementById('stwa'); //take the element by id called 'stwa' and store that in a variable called 'stwa'
+alert(stwa.value);
+}  //end of changestat() function 
+function stopwatch(){ //declare a function called stopwatch()
+var x=document.getElementById('butn').value; //take the value by id called 'butn' and store that in a variable called 'x'
+if (x=='Stop'){  //declare if block if x is equal to 'Pause'
+   sec++;  //keep adding '1' to the value of sec variable
+  if (sec == 83) {  //declare if block if sec is equal to '60'
+   document.write("Failed...!");
+   
+}  
+if (sec<=9) { 
+sec = "0" + sec;   
+}  
+ var stwa=document.getElementById('stwa'); 
+alert(stwa);
+ stwa.value = ((mins<=9) ? "0" + mins : mins) + " : " + sec;  
+
+SD=window.setTimeout("stopwatch();", 10); 
+}  
+} 
+</script> 
+
+
+
+
+
+
+
+
+
 <body id="b">
 	<div id="r">
 		<div id="button">
+		<input type="button" value="Start" id="butn"  onClick="changestat()"/> 
 		</div>
 		<div id="timer">
+		<input type="text" value="00 : 00" id="stwa"/>
 		</div>
 		<div id="result">
 		<h4>RESULT</h4>
